@@ -20,14 +20,12 @@ setInterval(() => {
   fetch("https://doviz.dev/v1/try.json")
     .then((res) => res.json())
     .then((getCurrency) => {
-      for (let i = 0; i < currency.length; i++) {
-        currencyObject.usd = getCurrency[`USDTRY`];
-        currencyObject.eur = getCurrency[`EURTRY`];
-        currencyObject.aud = getCurrency[`AUDTRY`];
-        currencyObject.gbp = getCurrency[`GBPTRY`];
-        currencyObject.jpy = getCurrency[`JPYTRY`];
-        currencyObject.chf = getCurrency[`CHFTRY`];
-      }
+      currencyObject.usd = getCurrency[`USDTRY`];
+      currencyObject.eur = getCurrency[`EURTRY`];
+      currencyObject.aud = getCurrency[`AUDTRY`];
+      currencyObject.gbp = getCurrency[`GBPTRY`];
+      currencyObject.jpy = getCurrency[`JPYTRY`];
+      currencyObject.chf = getCurrency[`CHFTRY`];
       console.log(currencyObject);
     });
 }, 5000);
