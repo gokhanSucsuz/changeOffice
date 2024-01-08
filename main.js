@@ -3,6 +3,10 @@
 const currency = ["usd", "eur", "aud", "gbp", "jpy", "chf"];
 
 setInterval(() => {
+  fetch("http://hasanadiguzel.com.tr/api/kurgetir")
+    .then((response) => response.json())
+    .then((data) => console.log(data.TCMB_AnlikKurBilgileri));
+
   fetch("https://doviz.dev/v1/try.json")
     .then((res) => res.json())
     .then((getCurrency) => {
