@@ -26,9 +26,19 @@ setInterval(() => {
       currencyObject.gbp = getCurrency[`GBPTRY`];
       currencyObject.jpy = getCurrency[`JPYTRY`];
       currencyObject.chf = getCurrency[`CHFTRY`];
-      console.log(currencyObject);
+      //console.log(currencyObject);
     });
-}, 5000);
+}, 10000);
+
+function control(value) {
+  if (value == "usd") { return currencyObject.usd }
+  else if (value == "eur") { return currencyObject.eur }
+  else if (value == "aud") { return currencyObject.aud }
+  else if (value == "gbp") { return currencyObject.gbp }
+  else if (value == "jpy") { return currencyObject.jpy }
+  else return currencyObject.chftry
+}
+
 
 setInterval(() => {
   fetch("https://doviz.dev/v1/try.json")
@@ -42,17 +52,16 @@ setInterval(() => {
 
       for (let i = 0; i < currency.length; i++) {
         let text = getCurrency[`${currency[i].toUpperCase()}TRY`];
-
         let value = currency[i];
-        console.log(currencyObject.usd);
-        if (parseFloat(currencyObject.value) < parseFloat(text)) {
+        console.log(control(value))
+        if (parseFloat(control(value)) < parseFloat(text)) {
           const tagValue = document.querySelector(`.${currency[i]}`);
           tagValue.parentElement.innerHTML = `
             <i class="bi bi-arrow-down-left text-danger fw-bolder fs-5"></i><h4 class="text-danger px-2">${Number(
-              text
-            ).toFixed(4)}</h4>
+            text
+          ).toFixed(4)}</h4>
             `;
-        } else if (parseFloat(currencyObject.usd) < parseFloat(text)) {
+        } else if (parseFloat(control(value)) < parseFloat(text)) {
           const tagValue = document.querySelector(`.${currency[i]}`);
           if (tagValue != null) {
             tagValue.parentElement.innerHTML = `
