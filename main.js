@@ -31,9 +31,9 @@ setInterval(() => {
 }, 10000);
 
 function control(value) {
-  if (value == "usd") { return currencyObject.usd }
-  else if (value == "eur") { return currencyObject.eur }
-  else if (value == "aud") { return currencyObject.aud }
+  if (value == "usd") { return 50 }
+  else if (value == "eur") { return 20 }
+  else if (value == "aud") { return 50 }
   else if (value == "gbp") { return currencyObject.gbp }
   else if (value == "jpy") { return currencyObject.jpy }
   else return currencyObject.chftry
@@ -54,13 +54,16 @@ setInterval(() => {
         let text = getCurrency[`${currency[i].toUpperCase()}TRY`];
         let value = currency[i];
         console.log(control(value))
+
         if (parseFloat(control(value)) < parseFloat(text)) {
           const tagValue = document.querySelector(`.${currency[i]}`);
-          tagValue.parentElement.innerHTML = `
+          if (tagValue != null) {
+            tagValue.parentElement.innerHTML = `
             <i class="bi bi-arrow-down-left text-danger fw-bolder fs-5"></i><h4 class="text-danger px-2">${Number(
-            text
-          ).toFixed(4)}</h4>
+              text
+            ).toFixed(4)}</h4>
             `;
+          }
         } else if (parseFloat(control(value)) < parseFloat(text)) {
           const tagValue = document.querySelector(`.${currency[i]}`);
           if (tagValue != null) {
