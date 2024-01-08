@@ -31,8 +31,8 @@ setInterval(() => {
 }, 10000);
 
 function control(value) {
-  if (value == "usd") { return currencyObject.usd }
-  else if (value == "eur") { return currencyObject.eur }
+  if (value == "usd") { return 20 } //currencyObject.usd
+  else if (value == "eur") { return 60 } //currencyObject.eur
   else if (value == "aud") { return currencyObject.aud }
   else if (value == "gbp") { return currencyObject.gbp }
   else if (value == "jpy") { return currencyObject.jpy }
