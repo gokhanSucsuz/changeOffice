@@ -6,7 +6,9 @@ setInterval(() => {
   fetch("https://doviz.dev/v1/try.json")
     .then((res) => res.json())
     .then((getCurrency) => {
+      let currencyDiv;
       for (let i = 0; i < currency.length; i++) {
+        currencyDiv = document.querySelector(`.${currency[i]}`);
         document.querySelectorAll(".h4").forEach((item) => {
           item.remove();
         });
@@ -14,7 +16,8 @@ setInterval(() => {
 
       for (let i = 0; i < currency.length; i++) {
         let text = getCurrency[`${currency[i].toUpperCase()}TRY`];
-        if (parseFloat(currency[i].innerHTML) < parseFloat(text)) {
+
+        if (parseFloat(currencyDiv.innerHTML) < parseFloat(text)) {
           const tagValue = document.querySelector(`.${currency[i]}`);
           tagValue.parentElement.innerHTML = `
             <i class="bi bi-arrow-down-left text-danger fw-bolder fs-5"></i><h4 class="text-danger px-2">${Number(
@@ -42,4 +45,4 @@ setInterval(() => {
         }
       }
     });
-}, 500);
+}, 3000);
