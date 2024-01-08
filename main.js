@@ -31,9 +31,9 @@ setInterval(() => {
 }, 10000);
 
 function control(value) {
-  if (value == "usd") { return 50 }
-  else if (value == "eur") { return 20 }
-  else if (value == "aud") { return 50 }
+  if (value == "usd") { return currencyObject.usd }
+  else if (value == "eur") { return currencyObject.eur }
+  else if (value == "aud") { return currencyObject.aud }
   else if (value == "gbp") { return currencyObject.gbp }
   else if (value == "jpy") { return currencyObject.jpy }
   else return currencyObject.chftry
@@ -64,7 +64,7 @@ setInterval(() => {
             ).toFixed(4)}</h4>
             `;
           }
-        } else if (parseFloat(control(value)) < parseFloat(text)) {
+        } else if (parseFloat(control(value)) > parseFloat(text)) {
           const tagValue = document.querySelector(`.${currency[i]}`);
           if (tagValue != null) {
             tagValue.parentElement.innerHTML = `
